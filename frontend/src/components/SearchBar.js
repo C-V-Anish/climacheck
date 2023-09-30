@@ -38,7 +38,7 @@ const SearchBar = () => {
           const longitude = position.coords.longitude;
 
           try{
-            const response = await axios.get('http://127.0.0.1:8000/weather/', {
+            const response = await axios.get('http://35.244.34.40:8000/weather/', {
               params : { latitude: latitude, longitude: longitude }
             });
             seterrorMessage('');
@@ -59,7 +59,7 @@ const SearchBar = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/weather/', {
+      const response = await axios.get('http://35.244.34.40:8000/weather/', {
         params : { city: searchText }
       });
   

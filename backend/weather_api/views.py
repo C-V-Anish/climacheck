@@ -15,7 +15,6 @@ def k2c(c_temp):
 class WeatherInfo(APIView):
     def get(self, request):
         # Used to read contents of the .env file
-        print(api_key)
         city = request.query_params.get('city') or None
         latitude = request.query_params.get('latitude') or None
         longitude = request.query_params.get('longitude') or None
@@ -30,7 +29,6 @@ class WeatherInfo(APIView):
             if city :
                 response = requests.get(geoLoc_URL)
                 data = response.json()
-                print(data)
 
                 if response.status_code == 200:
                     latitude = data[0]["lat"]
@@ -46,7 +44,6 @@ class WeatherInfo(APIView):
 
             response = requests.get(weather_URL)
             data=response.json()
-            print(data)
             weather_data = {
                 "location": data['name'] + str(", "+state if city else ""),
                 "abs_temp": k2c(data["main"]["temp"]),
